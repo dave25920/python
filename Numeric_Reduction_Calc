@@ -1,0 +1,17 @@
+print("Dave's Numeric Reduction Calculator") #Welcome message
+number = input("Enter your number to reduce to single digit:") #user input
+print("Processing request...")
+result = [int(i) for i in list(number)] #create list out of the user input
+print("Reducing... ", result) #Gives user an update on reduction status
+
+def reduce_num(result): #recursive function to reduce number to single digit
+    number = sum(result) #Adds all the digits in the list together and puts back into number
+    number = str(number) #Convert the number to a string
+    if len(str(number)) == 1: #Checks if we have reduced the number to a single digit yet
+        print("Your reduced number is: " + str(number)) #If we have a single digit, print final result
+    else: #If not a single digit, recompile result list for further reduction
+        result = [int(i) for i in list(number)] #Compile new list of remaining digits
+        print("Reducing... ", result) #Gives user an update on reduction status
+        reduce_num(result) #Recursive call to loop function until single digit
+   
+reduce_num(result) #Calls the reduce_num function
